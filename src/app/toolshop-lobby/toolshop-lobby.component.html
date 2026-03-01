@@ -1,0 +1,152 @@
+<div class="layout">
+  <div class="canvas">
+    <article class="content-card">
+      <div class="article-content">
+        <input
+          #randomNameInput
+          name="name-imput"
+          class="text-input"
+          type="text"
+          placeholder="Type something"
+        />
+
+        <button (click)="fetchRandomRickAndMorty(randomNameInput.value)">
+          Rick and Morty Random
+        </button>
+
+        <button (click)="clearInput(randomNameInput)">Clear</button>
+        <p>{{ characterName }}</p>
+        <div class="image-wrapper">
+          <img
+            class="character-image"
+            *ngIf="imageUrl"
+            [src]="imageUrl"
+            alt="Character Image"
+          />
+        </div>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <div class="article-content">
+        <input
+          #nameInput
+          name="name-imput"
+          class="text-input"
+          type="text"
+          placeholder="Type something"
+        />
+        <button (click)="fetchPokeWithId(nameInput.value)">Pokemon</button>
+        <button (click)="fetchStarWars(nameInput.value)">Star Wars</button>
+        <button (click)="fetchRickAndMorty(nameInput.value)">
+          Rick and Morty
+        </button>
+        <button (click)="clearInput(nameInput)">Clear</button>
+
+        <p>{{ characterName }}</p>
+        <div class="image-wrapper">
+          <img
+            class="character-image"
+            *ngIf="imageUrl"
+            [src]="imageUrl"
+            alt="Character Image"
+          />
+        </div>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <div class="article-content">
+        <fieldset>
+          <legend>Select API</legend>
+          <input
+            name="apiInput"
+            #apiInput
+            type="text"
+            placeholder="Type something"
+          />
+          @for (apiType of apiTypes; track apiType) {
+            <div>
+              <input
+                type="radio"
+                id="{{ apiType }}"
+                name="drone"
+                value="huey"
+                (change)="selectedApi = apiType"
+              />
+              <label>{{ apiType }}</label>
+            </div>
+          }
+
+          <div>
+            <button (click)="submitForm(apiInput.value)" type="submit">
+              Submit
+            </button>
+          </div>
+        </fieldset>
+        <p>{{ characterName }}</p>
+        <div class="image-wrapper">
+          <img
+            class="character-image"
+            *ngIf="imageUrl"
+            [src]="imageUrl"
+            alt="Character Image"
+          />
+        </div>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <div class="article-content">
+        <fieldset>
+          <legend>Select API</legend>
+          <div>
+            <input
+              type="radio"
+              id="huey"
+              name="drone"
+              value="huey"
+              (change)="selectedApi = 'huey'"
+              checked
+            />
+            <label for="huey">Huey</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="dewey"
+              name="drone"
+              value="dewey"
+              (change)="selectedApi = 'dewey'"
+            />
+            <label for="dewey">Dewey</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="louie"
+              name="drone"
+              value="louie"
+              (change)="selectedApi = 'louie'"
+            />
+            <label for="louie">Louie</label>
+          </div>
+          <div>
+            <button (click)="submitForm(nameInput.value)" type="submit">
+              Submit
+            </button>
+          </div>
+        </fieldset>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <div class="article-content">
+        <p>toolshop-lobby works!</p>
+        <button type="button" (click)="postStuff()">Click Me!</button>
+        <button type="button" (click)="fetchPokemon()">Fetch Pokemon</button>
+        <p>{{ characterName }}</p>
+      </div>
+    </article>
+  </div>
+</div>
