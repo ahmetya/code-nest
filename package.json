@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "deploy": "ng build --configuration production --base-href \"https://ahmetya.github.io/code-nest/\" && npx ngh --dir=dist/code-nest/browser",
     "serve:ssr:code-nest": "node dist/code-nest/server/server.mjs"
   },
   "private": true,
