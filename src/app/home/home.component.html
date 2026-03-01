@@ -1,6 +1,15 @@
-<p>THIS IS HOME COMPONENT!</p>
-<div>
-  <a [routerLink]="'toolshop-lobby'" title="Navigate to Toolshop Lobby">
-    Go to Toolshop Lobby
-  </a>
+<div class="layout">
+  <div class="canvas">
+    <article class="content-card">
+      <div class="article-content">
+        <a [routerLink]="'toolshop-lobby'" title="Navigate to Toolshop Lobby">
+          <button>TOOLSHOP LOBBY</button>
+        </a>
+
+        <a [routerLink]="'toolshop-art'" title="Navigate to Toolshop Art">
+          <button>TOOLSHOP ART</button>
+        </a>
+      </div>
+    </article>
+  </div>
 </div>

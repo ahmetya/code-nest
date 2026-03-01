@@ -1,17 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToolshopLobbyComponent } from './toolshop-lobby.component';
+import { ToolshopArtComponent } from './toolshop-art.component';
 
-describe('ToolshopLobbyComponent', () => {
-  let component: ToolshopLobbyComponent;
-  let fixture: ComponentFixture<ToolshopLobbyComponent>;
-
+describe('ToolshopArtComponent', () => {
+  let component: ToolshopArtComponent;
+  let fixture: ComponentFixture<ToolshopArtComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ToolshopLobbyComponent],
+      imports: [ToolshopArtComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ToolshopLobbyComponent);
+    fixture = TestBed.createComponent(ToolshopArtComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

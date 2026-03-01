@@ -1,0 +1,161 @@
+img {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  border: solid;
+  border-color: beige;
+}
+
+.button-group {
+  width: 200px;
+  display: grid;
+  gap: 10px;
+}
+
+button {
+  width: 208px;
+  min-height: 28px;
+  background: linear-gradient(
+    270deg,
+    rgb(239, 213, 200) 0%,
+    rgb(210, 233, 227) 25.96%,
+    rgb(198, 222, 250) 53.37%,
+    rgb(196, 199, 251) 79.33%,
+    rgb(199, 182, 250) 100%
+  );
+  border-radius: 4px;
+  color: black;
+  font-weight: 700;
+}
+
+p,
+label {
+  font:
+    1rem "Fira Sans",
+    sans-serif;
+  color: rgba(145, 162, 191, 0.862);
+  font-weight: 700;
+  margin: 0;
+}
+
+fieldset {
+  width: 200px;
+}
+
+.test-page {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.text-input {
+  border: solid;
+  border-radius: 4px;
+  min-height: 24px;
+  min-width: 200px;
+  width: 100px;
+  background: rgba(169, 169, 169, 0.4509803922);
+  color: rgba(145, 162, 191, 0.862);
+  font-weight: 700;
+  margin: 0px;
+}
+
+.canvas {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 32px;
+}
+
+.content-card {
+  min-width: 320px;
+  width: 320px;
+  height: 380px;
+  background-color: #1c1f26;
+
+  border-radius: 16px;
+  border-width: 2px;
+  border-color: color(srgb 0.658823 0.701961 0.811765 / 0.2);
+  border-style: solid;
+}
+
+.article-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+}
+
+.layout {
+  background-color: #0e1217;
+  min-height: 100vh;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.image-wrapper {
+  position: relative;
+  z-index: 0;
+  margin-top: 8px;
+}
+
+.image-wrapper:after {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(8px);
+  width: calc(100% + 8px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 16px;
+}
+
+.image-wrapper:empty {
+  display: none;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+legend {
+  font:
+    1rem "Fira Sans",
+    sans-serif;
+  color: #87afa6;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: rgba(145, 162, 191, 0.862);
+  font-weight: 700;
+}
