@@ -4,6 +4,8 @@ img {
   border-radius: 16px;
   border: solid;
   border-color: beige;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
 }
 
 .button-group {
@@ -158,4 +160,15 @@ legend {
   /* WebKit, Blink, Edge */
   color: rgba(145, 162, 191, 0.862);
   font-weight: 700;
+}
+
+.secondary {
+  font-family: "Press Start 2P", monospace;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+  background: #7782aa;
+  color: #474a6e;
+}
+.secondary:hover {
+  color: #6e4762;
 }

@@ -2,13 +2,7 @@
   <div class="canvas">
     <article class="content-card">
       <div class="article-content">
-        <input
-          #randomNameInput
-          name="name-imput"
-          class="text-input"
-          type="text"
-          placeholder="Type something"
-        />
+        <input #randomNameInput name="name-imput" class="text-input" type="text" placeholder="Type something" />
 
         <button (click)="fetchRandomRickAndMorty(randomNameInput.value)">
           Rick and Morty Random
@@ -17,25 +11,14 @@
         <button (click)="clearInput(randomNameInput)">Clear</button>
         <p>{{ characterName }}</p>
         <div class="image-wrapper">
-          <img
-            class="character-image"
-            *ngIf="imageUrl"
-            [src]="imageUrl"
-            alt="Character Image"
-          />
+          <img class="character-image" *ngIf="imageUrl" [src]="imageUrl" alt="Character Image" />
         </div>
       </div>
     </article>
 
     <article class="content-card">
       <div class="article-content">
-        <input
-          #nameInput
-          name="name-imput"
-          class="text-input"
-          type="text"
-          placeholder="Type something"
-        />
+        <input #nameInput name="name-imput" class="text-input" type="text" placeholder="Type something" />
         <button (click)="fetchPokeWithId(nameInput.value)">Pokemon</button>
         <button (click)="fetchStarWars(nameInput.value)">Star Wars</button>
         <button (click)="fetchRickAndMorty(nameInput.value)">
@@ -45,12 +28,7 @@
 
         <p>{{ characterName }}</p>
         <div class="image-wrapper">
-          <img
-            class="character-image"
-            *ngIf="imageUrl"
-            [src]="imageUrl"
-            alt="Character Image"
-          />
+          <img class="character-image" *ngIf="imageUrl" [src]="imageUrl" alt="Character Image" />
         </div>
       </div>
     </article>
@@ -59,23 +37,12 @@
       <div class="article-content">
         <fieldset>
           <legend>Select API</legend>
-          <input
-            name="apiInput"
-            #apiInput
-            type="text"
-            placeholder="Type something"
-          />
+          <input name="apiInput" #apiInput type="text" placeholder="Type something" />
           @for (apiType of apiTypes; track apiType) {
-            <div>
-              <input
-                type="radio"
-                id="{{ apiType }}"
-                name="drone"
-                value="huey"
-                (change)="selectedApi = apiType"
-              />
-              <label>{{ apiType }}</label>
-            </div>
+          <div>
+            <input type="radio" id="{{ apiType }}" name="drone" value="huey" (change)="selectedApi = apiType" />
+            <label>{{ apiType }}</label>
+          </div>
           }
 
           <div>
@@ -86,12 +53,7 @@
         </fieldset>
         <p>{{ characterName }}</p>
         <div class="image-wrapper">
-          <img
-            class="character-image"
-            *ngIf="imageUrl"
-            [src]="imageUrl"
-            alt="Character Image"
-          />
+          <img class="character-image" *ngIf="imageUrl" [src]="imageUrl" alt="Character Image" />
         </div>
       </div>
     </article>
@@ -101,34 +63,15 @@
         <fieldset>
           <legend>Select API</legend>
           <div>
-            <input
-              type="radio"
-              id="huey"
-              name="drone"
-              value="huey"
-              (change)="selectedApi = 'huey'"
-              checked
-            />
+            <input type="radio" id="huey" name="drone" value="huey" (change)="selectedApi = 'huey'" checked />
             <label for="huey">Huey</label>
           </div>
           <div>
-            <input
-              type="radio"
-              id="dewey"
-              name="drone"
-              value="dewey"
-              (change)="selectedApi = 'dewey'"
-            />
+            <input type="radio" id="dewey" name="drone" value="dewey" (change)="selectedApi = 'dewey'" />
             <label for="dewey">Dewey</label>
           </div>
           <div>
-            <input
-              type="radio"
-              id="louie"
-              name="drone"
-              value="louie"
-              (change)="selectedApi = 'louie'"
-            />
+            <input type="radio" id="louie" name="drone" value="louie" (change)="selectedApi = 'louie'" />
             <label for="louie">Louie</label>
           </div>
           <div>

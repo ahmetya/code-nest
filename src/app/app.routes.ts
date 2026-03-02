@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { ToolshopLobbyComponent } from './toolshop-lobby/toolshop-lobby.component';
 import { ToolshopArtComponent } from './toolshop-art/toolshop-art.component';
 import { ToolshopAnimationComponent } from './toolshop-animation/toolshop-animation.component';
+import { ToolshopForestComponent } from './toolshop-forest/toolshop-forest.component';
 export const routes: Routes = [
   {
     path: '',
@@ -19,5 +20,9 @@ export const routes: Routes = [
   {
     path: 'toolshop-animation',
     component: ToolshopAnimationComponent,
+  },
+  {
+    path: 'toolshop-forest',
+    component: ToolshopForestComponent,
   },
 ];
