@@ -6,7 +6,7 @@
 }
 
 .body {
-  background: #0a0a0f;
+  background: linear-gradient(180deg, #050510 0%, #0a0a1a 50%, #0f0a15 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,47 +14,97 @@
   height: 100vh;
   font-family: "Courier New", monospace;
   overflow: hidden;
+  position: relative;
+}
+
+.body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    rgba(100, 50, 150, 0.1) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
 }
 
 h1 {
-  color: #7fff6b;
-  font-size: 13px;
-  letter-spacing: 4px;
+  color: #b088d0;
+  font-size: 14px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 18px;
-  text-shadow: 0 0 12px #7fff6b88;
-  opacity: 0.85;
+  margin-bottom: 20px;
+  text-shadow:
+    0 0 10px rgba(176, 136, 208, 0.6),
+    0 0 30px rgba(100, 70, 150, 0.4);
+  opacity: 0.9;
+  animation: titleGlow 4s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px rgba(176, 136, 208, 0.6),
+      0 0 30px rgba(100, 70, 150, 0.4);
+  }
+  50% {
+    text-shadow:
+      0 0 15px rgba(176, 136, 208, 0.9),
+      0 0 40px rgba(100, 70, 150, 0.6),
+      0 0 60px rgba(80, 180, 120, 0.3);
+  }
 }
 
 #game-container {
   position: relative;
-  width: 480px;
-  height: 200px;
-  border: 2px solid #2a4a2a;
+  width: 640px;
+  max-width: 95vw;
+  aspect-ratio: 320 / 134;
+  height: auto;
+  border: 3px solid #2a3a4a;
+  border-radius: 4px;
   box-shadow:
-    0 0 40px #1a3a1a,
-    0 0 80px #0a1a0a;
+    0 0 30px rgba(50, 100, 150, 0.3),
+    0 0 60px rgba(30, 60, 90, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-  background: #0d1f0d;
+  background: #050510;
+}
+
+#game-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(100, 150, 200, 0.2);
+  border-radius: 2px;
+  pointer-events: none;
 }
 
 canvas {
   display: block;
-  width: 480px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
 }
 
 #info {
-  color: #3a6a3a;
+  color: #5a7a9a;
   font-size: 10px;
-  letter-spacing: 2px;
-  margin-top: 12px;
+  letter-spacing: 3px;
+  margin-top: 15px;
   text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }
 
-@media (max-width: 540px) {
-  #game-container {
-    width: 90%;
-    height: 200px;
-  }
+#info:hover {
+  opacity: 1;
+  color: #7aa0c0;
 }
