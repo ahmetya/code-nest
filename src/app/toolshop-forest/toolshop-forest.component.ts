@@ -56,103 +56,43 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
   frameTimer = 0;
   FRAME_SPEED = 5;
 
-  // Character frames (more detailed)
+  // Character frames (simplified)
   FRAMES = [
     {
-      hx: 0,
-      hy: 54,
-      bx: 0,
-      by: 62,
+      hy: 174,
+      by: 188,
       bounce: 0,
-      capeAngle: -5,
-      ll: [
-        [-2, 80],
-        [0, 88],
-      ],
-      rl: [
-        [4, 80],
-        [3, 88],
-      ],
-      la: [
-        [-4, 66],
-        [-6, 72],
-      ],
-      ra: [
-        [6, 66],
-        [8, 72],
-      ],
+      ll: [-3, 204],
+      rl: [5, 206],
+      la: [-8, 192],
+      ra: [12, 196],
     },
     {
-      hx: 0,
-      hy: 53,
-      bx: 0,
-      by: 61,
-      bounce: -1,
-      capeAngle: 5,
-      ll: [
-        [2, 79],
-        [4, 87],
-      ],
-      rl: [
-        [-4, 79],
-        [-2, 87],
-      ],
-      la: [
-        [4, 65],
-        [6, 71],
-      ],
-      ra: [
-        [-4, 65],
-        [-6, 71],
-      ],
-    },
-    {
-      hx: 0,
-      hy: 52,
-      bx: 0,
-      by: 60,
+      hy: 173,
+      by: 187,
       bounce: -2,
-      capeAngle: 10,
-      ll: [
-        [-3, 78],
-        [1, 86],
-      ],
-      rl: [
-        [5, 78],
-        [2, 86],
-      ],
-      la: [
-        [-5, 64],
-        [-4, 70],
-      ],
-      ra: [
-        [7, 64],
-        [6, 70],
-      ],
+      ll: [4, 206],
+      rl: [-2, 204],
+      la: [10, 194],
+      ra: [-6, 192],
     },
     {
-      hx: 0,
-      hy: 53,
-      bx: 0,
-      by: 61,
-      bounce: -1,
-      capeAngle: 0,
-      ll: [
-        [4, 79],
-        [-2, 87],
-      ],
-      rl: [
-        [-3, 79],
-        [1, 87],
-      ],
-      la: [
-        [5, 65],
-        [4, 71],
-      ],
-      ra: [
-        [-5, 65],
-        [-4, 71],
-      ],
+      hy: 172,
+      by: 186,
+      bounce: -3,
+      ll: [-4, 206],
+      rl: [6, 204],
+      la: [-6, 190],
+      ra: [14, 196],
+    },
+    {
+      hy: 173,
+      by: 187,
+      bounce: -2,
+      ll: [5, 204],
+      rl: [-3, 206],
+      la: [12, 192],
+      ra: [-8, 194],
     },
   ];
 
@@ -558,7 +498,7 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
       this.ctx.globalAlpha = alpha;
 
       const sway = Math.sin(this.t * tree.swaySpeed + tree.sway) * 4;
-      const baseY = 192;
+      const baseY = 218;
       const gx = Math.round(tree.x);
 
       // Trunk
@@ -740,84 +680,76 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
   drawCharacter() {
     const f = this.FRAMES[this.frame];
     const cx = 160;
-    const bounceY = f.bounce * 2;
+    const bounceY = f.bounce;
 
     // Shadow
     this.ctx.globalAlpha = 0.4;
-    this.px(cx - 8, 216, this.p.charShadow, 32, 4);
+    this.px(cx - 6, 218, this.p.charShadow, 20, 3);
     this.ctx.globalAlpha = 1;
 
     // Cape (animated)
-    const capeWave = Math.sin(this.t * 0.2) * 4;
+    const capeWave = Math.sin(this.t * 0.2) * 3;
     this.ctx.fillStyle = this.p.charCape;
     this.ctx.beginPath();
-    this.ctx.moveTo(cx + 4, f.by * 2 + bounceY + 8);
-    this.ctx.lineTo(cx - 16 + capeWave, f.by * 2 + bounceY + 40);
-    this.ctx.lineTo(cx - 8 + capeWave * 0.5, f.by * 2 + bounceY + 44);
-    this.ctx.lineTo(cx + 4, f.by * 2 + bounceY + 16);
+    this.ctx.moveTo(cx, f.by + bounceY + 4);
+    this.ctx.lineTo(cx - 12 + capeWave, f.by + bounceY + 28);
+    this.ctx.lineTo(cx - 6 + capeWave * 0.5, f.by + bounceY + 30);
+    this.ctx.lineTo(cx + 2, f.by + bounceY + 10);
     this.ctx.fill();
 
-    // Cape highlight
-    this.ctx.fillStyle = this.p.charCapeLight;
-    this.ctx.beginPath();
-    this.ctx.moveTo(cx + 4, f.by * 2 + bounceY + 8);
-    this.ctx.lineTo(cx - 8 + capeWave * 0.5, f.by * 2 + bounceY + 24);
-    this.ctx.lineTo(cx + 4, f.by * 2 + bounceY + 12);
-    this.ctx.fill();
+    // Left leg
+    const [llx, lly] = f.ll;
+    this.px(cx + llx, lly + bounceY, this.p.charBody, 5, 10);
+    this.px(cx + llx, lly + bounceY + 10, this.p.charBoots, 5, 4);
 
-    // Legs
-    for (const [ox, oy] of f.ll) {
-      this.px(cx + ox * 2, oy * 2 + bounceY, this.p.charBody, 6, 8);
-      this.px(cx + ox * 2, oy * 2 + bounceY + 8, this.p.charBoots, 6, 4);
-    }
-    for (const [ox, oy] of f.rl) {
-      this.px(cx + ox * 2, oy * 2 + bounceY, this.p.charBody, 6, 8);
-      this.px(cx + ox * 2, oy * 2 + bounceY + 8, this.p.charBoots, 6, 4);
-    }
+    // Right leg
+    const [rlx, rly] = f.rl;
+    this.px(cx + rlx, rly + bounceY, this.p.charBody, 5, 10);
+    this.px(cx + rlx, rly + bounceY + 10, this.p.charBoots, 5, 4);
 
     // Body
-    this.px(cx - 4, f.by * 2 + bounceY, this.p.charBody, 16, 20);
-    this.px(cx - 2, f.by * 2 + bounceY + 2, this.p.charBodyLight, 8, 12);
+    this.px(cx - 4, f.by + bounceY, this.p.charBody, 14, 18);
+    this.px(cx - 2, f.by + bounceY + 2, this.p.charBodyLight, 6, 10);
 
     // Belt
-    this.px(cx - 4, f.by * 2 + bounceY + 16, '#40302a', 16, 4);
-    this.px(cx + 2, f.by * 2 + bounceY + 16, '#c0a040', 4, 4);
+    this.px(cx - 4, f.by + bounceY + 14, '#40302a', 14, 3);
+    this.px(cx + 2, f.by + bounceY + 14, '#c0a040', 3, 3);
 
-    // Arms
-    for (const [ox, oy] of f.la) {
-      this.px(cx + ox * 2 - 4, oy * 2 + bounceY, this.p.charBody, 6, 8);
-      this.px(cx + ox * 2 - 4, oy * 2 + bounceY + 8, this.p.charSkin, 4, 4);
-    }
-    for (const [ox, oy] of f.ra) {
-      this.px(cx + ox * 2 + 6, oy * 2 + bounceY, this.p.charBody, 6, 8);
-      this.px(cx + ox * 2 + 6, oy * 2 + bounceY + 8, this.p.charSkin, 4, 4);
-    }
+    // Left arm
+    const [lax, lay] = f.la;
+    this.px(cx + lax, lay + bounceY, this.p.charBody, 5, 8);
+    this.px(cx + lax + 1, lay + bounceY + 8, this.p.charSkin, 3, 3);
+
+    // Right arm
+    const [rax, ray] = f.ra;
+    this.px(cx + rax, ray + bounceY, this.p.charBody, 5, 8);
+    this.px(cx + rax + 1, ray + bounceY + 8, this.p.charSkin, 3, 3);
 
     // Head
-    this.px(cx - 2, f.hy * 2 + bounceY, this.p.charSkin, 16, 16);
-    this.px(cx - 4, f.hy * 2 + bounceY + 4, this.p.charSkin, 20, 8);
+    this.px(cx - 1, f.hy + bounceY, this.p.charSkin, 12, 12);
+    this.px(cx - 3, f.hy + bounceY + 3, this.p.charSkin, 16, 6);
 
     // Face shadow
-    this.px(cx - 2, f.hy * 2 + bounceY + 8, this.p.charSkinShadow, 6, 6);
+    this.px(cx - 1, f.hy + bounceY + 6, this.p.charSkinShadow, 4, 4);
 
     // Hair
-    this.px(cx - 4, f.hy * 2 + bounceY - 2, this.p.charHair, 20, 8);
-    this.px(cx - 6, f.hy * 2 + bounceY + 2, this.p.charHair, 6, 8);
-    this.px(cx + 12, f.hy * 2 + bounceY + 2, this.p.charHair, 4, 4);
+    this.px(cx - 3, f.hy + bounceY - 2, this.p.charHair, 16, 6);
+    this.px(cx - 5, f.hy + bounceY + 1, this.p.charHair, 4, 6);
+    this.px(cx + 10, f.hy + bounceY + 2, this.p.charHair, 3, 3);
 
     // Eyes
-    this.px(cx + 8, f.hy * 2 + bounceY + 6, this.p.charEye, 4, 4);
-    this.px(cx + 10, f.hy * 2 + bounceY + 6, '#ffffff', 2, 2);
+    this.px(cx + 6, f.hy + bounceY + 4, this.p.charEye, 3, 3);
+    this.px(cx + 7, f.hy + bounceY + 4, '#ffffff', 2, 2);
 
     // Mouth
-    this.px(cx + 8, f.hy * 2 + bounceY + 12, '#c06050', 4, 2);
+    this.px(cx + 6, f.hy + bounceY + 9, '#c06050', 3, 2);
 
     // Speed lines
-    this.ctx.globalAlpha = 0.5;
-    for (let i = 0; i < 4; i++) {
-      const ly = 140 + i * 10 + (this.frame % 2) * 4;
-      const lw = 12 + i * 6;
-      this.px(cx - 40 - lw, ly + bounceY, this.p.charBodyLight, lw, 2);
+    this.ctx.globalAlpha = 0.4;
+    for (let i = 0; i < 3; i++) {
+      const ly = 150 + i * 8 + (this.frame % 2) * 3;
+      const lw = 8 + i * 4;
+      this.px(cx - 30 - lw, ly + bounceY, this.p.charBodyLight, lw, 2);
     }
     this.ctx.globalAlpha = 1;
   }
@@ -884,9 +816,9 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
     this.drawClouds();
     this.drawMountains();
     this.drawFog();
-    this.drawTrees();
     this.drawParticles();
     this.drawGround();
+    this.drawTrees();
     this.drawFireflies();
     this.drawBats();
     this.drawLeaves();
