@@ -172,10 +172,10 @@ export class ToolshopForestComponent implements AfterViewInit {
       gline: '#162a0e',
       moss: '#1e3a12',
       char_s: '#1a3a6a', // shadow
-      char_b: '#3a7adf', // body blue
-      char_h: '#f5d080', // skin
+      char_b: '#9d4fd4bf', // body blue
+      char_h: '#f5d080c6', // skin
       char_e: '#1a1a2a', // eye
-      char_r: '#e05050', // red scarf
+      char_r: '#4c839eff', // red scarf
       char_g: '#2aaf50', // green accent
       white: '#f0f0f0',
     };

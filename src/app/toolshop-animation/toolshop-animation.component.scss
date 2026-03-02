@@ -4,17 +4,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #050510;
+  background: #0c0c18;
   font-family: system-ui;
 }
 
 .frame {
   width: 360px;
   height: 360px;
-  border: 4px solid #3f3f46;
+  border: 4px solid #3a3a48;
   border-radius: 8px;
   background: #000;
-  box-shadow: 0 0 30px #000;
+  box-shadow: 0 0 40px rgba(120, 40, 120, 0.4);
   overflow: hidden;
   image-rendering: pixelated;
   position: relative;
@@ -24,7 +24,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  background: linear-gradient(#4ec0ff, #87ceeb 40%, #4b3b2b 40%, #2b241b 100%);
+  background: linear-gradient(#3a2860, #4d3868 40%, #3a2520 40%, #201815 100%);
   overflow: hidden;
 }
 
@@ -38,10 +38,10 @@ body {
   background-repeat: repeat-x;
   background-size: 120px 60px;
   background-image: linear-gradient(
-    #3a7b3a 0,
-    #3a7b3a 50%,
-    #2a5a2a 50%,
-    #2a5a2a 100%
+    #3a5038 0,
+    #3a5038 50%,
+    #2a3a28 50%,
+    #2a3a28 100%
   );
   clip-path: polygon(
     0% 100%,
@@ -82,12 +82,12 @@ body {
   background-repeat: repeat-x;
   background-size: 32px 32px;
   background-image: linear-gradient(
-    #3b2a1a 0,
-    #3b2a1a 50%,
-    #2a1b10 50%,
-    #2a1b10 100%
+    #3a2818 0,
+    #3a2818 50%,
+    #2a1a10 50%,
+    #2a1a10 100%
   );
-  box-shadow: 0 -4px 0 #1a120a;
+  box-shadow: 0 -4px 0 #1a1210;
   animation: ground-scroll 3s linear infinite;
 }
 
@@ -110,36 +110,42 @@ body {
   height: 32px;
   background:
         /* head */
-    linear-gradient(#f5d7b2 0 40%, transparent 40%) 8px 0 / 16px 16px no-repeat,
-    /* body */ linear-gradient(#ff4444 0 100%, transparent 0) 8px 16px / 16px
+    linear-gradient(#b8b8c8 0 40%, transparent 40%) 8px 0 / 16px 16px no-repeat,
+    /* body */ linear-gradient(#5a3030 0 100%, transparent 0) 8px 16px / 16px
       10px no-repeat,
-    /* legs */ linear-gradient(#222 0 100%, transparent 0) 8px 26px / 6px 10px
-      no-repeat,
-    linear-gradient(#222 0 100%, transparent 0) 18px 26px / 6px 10px no-repeat;
+    /* legs */ linear-gradient(#202020 0 100%, transparent 0) 8px 26px / 6px
+      10px no-repeat,
+    linear-gradient(#202020 0 100%, transparent 0) 18px 26px / 6px 10px
+      no-repeat;
   image-rendering: pixelated;
   animation: walk 0.5s steps(2) infinite;
+  filter: drop-shadow(0 0 5px rgba(140, 80, 120, 0.5));
 }
 
 /* Fake walk by swapping legs */
 @keyframes walk {
   0% {
     background:
-      linear-gradient(#f5d7b2 0 40%, transparent 40%) 8px 0 / 16px 16px
+      linear-gradient(#b8b8c8 0 40%, transparent 40%) 8px 0 / 16px 16px
         no-repeat,
-      linear-gradient(#ff4444 0 100%, transparent 0) 8px 16px / 16px 10px
+      linear-gradient(#5a3030 0 100%, transparent 0) 8px 16px / 16px 10px
         no-repeat,
-      linear-gradient(#222 0 100%, transparent 0) 6px 26px / 6px 10px no-repeat,
-      linear-gradient(#222 0 100%, transparent 0) 20px 26px / 6px 10px no-repeat;
+      linear-gradient(#202020 0 100%, transparent 0) 6px 26px / 6px 10px
+        no-repeat,
+      linear-gradient(#202020 0 100%, transparent 0) 20px 26px / 6px 10px
+        no-repeat;
   }
 
   100% {
     background:
-      linear-gradient(#f5d7b2 0 40%, transparent 40%) 8px 0 / 16px 16px
+      linear-gradient(#b8b8c8 0 40%, transparent 40%) 8px 0 / 16px 16px
         no-repeat,
-      linear-gradient(#ff4444 0 100%, transparent 0) 8px 16px / 16px 10px
+      linear-gradient(#5a3030 0 100%, transparent 0) 8px 16px / 16px 10px
         no-repeat,
-      linear-gradient(#222 0 100%, transparent 0) 10px 26px / 6px 10px no-repeat,
-      linear-gradient(#222 0 100%, transparent 0) 16px 26px / 6px 10px no-repeat;
+      linear-gradient(#202020 0 100%, transparent 0) 10px 26px / 6px 10px
+        no-repeat,
+      linear-gradient(#202020 0 100%, transparent 0) 16px 26px / 6px 10px
+        no-repeat;
   }
 }
 
@@ -149,13 +155,13 @@ body {
   top: 40px;
   width: 60px;
   height: 20px;
-  background: #ffffff;
+  background: #4a4a5a;
   border-radius: 10px;
   box-shadow:
-    -18px 4px 0 #ffffff,
-    18px 2px 0 #ffffff,
-    0 -4px 0 #ffffff;
-  opacity: 0.9;
+    -18px 4px 0 #4a4a5a,
+    18px 2px 0 #4a4a5a,
+    0 -4px 0 #5a5a6a;
+  opacity: 0.7;
   animation: cloud-move 25s linear infinite;
 }
 
