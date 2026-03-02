@@ -28,9 +28,9 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
   canvas: HTMLCanvasElement = null as any;
   ctx: CanvasRenderingContext2D = null as any;
 
-  // Canvas dimensions (2x original for more detail)
-  WIDTH = 320;
-  HEIGHT = 134;
+  // Canvas dimensions (4x original for high detail)
+  WIDTH = 640;
+  HEIGHT = 268;
 
   // Color palette
   p: any = null;
@@ -259,10 +259,10 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
 
   initStars() {
     // Regular stars
-    this.stars = Array.from({ length: 80 }, () => ({
+    this.stars = Array.from({ length: 150 }, () => ({
       x: Math.random() * this.WIDTH,
-      y: Math.random() * 50,
-      size: Math.random() < 0.2 ? 2 : 1,
+      y: Math.random() * 100,
+      size: Math.random() < 0.2 ? 3 : 2,
       brightness: Math.random(),
       twinkleSpeed: 0.02 + Math.random() * 0.03,
       color: Math.random() < 0.3 ? this.p.starDim : this.p.star,
@@ -280,30 +280,30 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
       for (let i = 0; i < numPeaks; i++) {
         peaks.push({
           x: (i / numPeaks) * this.WIDTH * 1.5,
-          height: 20 + Math.random() * 30 + layer * 10,
-          width: 30 + Math.random() * 40,
+          height: 40 + Math.random() * 60 + layer * 20,
+          width: 60 + Math.random() * 80,
         });
       }
       this.mountains.push({
         layer,
         peaks,
-        speed: 0.05 + layer * 0.08,
+        speed: 0.1 + layer * 0.16,
         color: [this.p.mt1, this.p.mt2, this.p.mt3, this.p.mt4][layer],
-        yOffset: 55 + layer * 8,
+        yOffset: 110 + layer * 16,
       });
     }
   }
 
   initTrees() {
     for (let layer = 0; layer < 5; layer++) {
-      const numTrees = 8 + layer * 3;
+      const numTrees = 10 + layer * 4;
       for (let i = 0; i < numTrees; i++) {
         this.trees.push({
           x: Math.random() * this.WIDTH * 1.5,
           layer,
-          height: 20 + Math.random() * 25 + layer * 5,
-          width: 8 + Math.random() * 8 + layer * 2,
-          speed: 0.1 + layer * 0.15,
+          height: 40 + Math.random() * 50 + layer * 10,
+          width: 16 + Math.random() * 16 + layer * 4,
+          speed: 0.2 + layer * 0.3,
           variant: Math.floor(Math.random() * 3),
           sway: Math.random() * Math.PI * 2,
           swaySpeed: 0.02 + Math.random() * 0.02,
@@ -314,76 +314,76 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
 
   initParticles() {
     // Dust/mist particles
-    this.particles = Array.from({ length: 30 }, () => ({
+    this.particles = Array.from({ length: 50 }, () => ({
       x: Math.random() * this.WIDTH,
-      y: 70 + Math.random() * 40,
-      size: 1 + Math.random() * 2,
-      speed: 0.1 + Math.random() * 0.3,
+      y: 140 + Math.random() * 80,
+      size: 2 + Math.random() * 4,
+      speed: 0.2 + Math.random() * 0.6,
       alpha: 0.1 + Math.random() * 0.3,
       drift: Math.random() * Math.PI * 2,
     }));
   }
 
   initFireflies() {
-    this.fireflies = Array.from({ length: 15 }, () => ({
+    this.fireflies = Array.from({ length: 25 }, () => ({
       x: Math.random() * this.WIDTH,
-      y: 50 + Math.random() * 50,
+      y: 100 + Math.random() * 100,
       phase: Math.random() * Math.PI * 2,
       glowSpeed: 0.03 + Math.random() * 0.03,
-      moveSpeed: 0.2 + Math.random() * 0.3,
-      amplitude: 3 + Math.random() * 5,
+      moveSpeed: 0.4 + Math.random() * 0.6,
+      amplitude: 6 + Math.random() * 10,
     }));
   }
 
   initBats() {
-    this.bats = Array.from({ length: 4 }, () => ({
+    this.bats = Array.from({ length: 6 }, () => ({
       x: Math.random() * this.WIDTH,
-      y: 20 + Math.random() * 30,
+      y: 40 + Math.random() * 60,
       wingPhase: Math.random() * Math.PI * 2,
-      speed: 0.8 + Math.random() * 0.5,
-      size: 2 + Math.random() * 2,
+      speed: 1.6 + Math.random() * 1.0,
+      size: 4 + Math.random() * 4,
     }));
   }
 
   initGrass() {
-    this.grassBlades = Array.from({ length: 100 }, () => ({
+    this.grassBlades = Array.from({ length: 200 }, () => ({
       x: Math.random() * this.WIDTH * 1.5,
-      height: 3 + Math.random() * 5,
+      height: 6 + Math.random() * 10,
       sway: Math.random() * Math.PI * 2,
       swaySpeed: 0.05 + Math.random() * 0.03,
     }));
   }
 
   initClouds() {
-    this.clouds = Array.from({ length: 5 }, () => ({
+    this.clouds = Array.from({ length: 8 }, () => ({
       x: Math.random() * this.WIDTH,
-      y: 10 + Math.random() * 25,
-      width: 20 + Math.random() * 40,
-      height: 6 + Math.random() * 8,
-      speed: 0.05 + Math.random() * 0.1,
+      y: 20 + Math.random() * 50,
+      width: 40 + Math.random() * 80,
+      height: 12 + Math.random() * 16,
+      speed: 0.1 + Math.random() * 0.2,
       alpha: 0.1 + Math.random() * 0.15,
     }));
   }
 
   initAurora() {
-    this.auroraWaves = Array.from({ length: 5 }, (_, i) => ({
-      offset: i * 20,
-      amplitude: 3 + Math.random() * 4,
-      frequency: 0.02 + Math.random() * 0.01,
+    this.auroraWaves = Array.from({ length: 7 }, (_, i) => ({
+      offset: i * 40,
+      amplitude: 6 + Math.random() * 8,
+      frequency: 0.01 + Math.random() * 0.005,
       speed: 0.02 + Math.random() * 0.02,
       alpha: 0.05 + Math.random() * 0.1,
     }));
   }
 
   initLeaves() {
-    this.leaves = Array.from({ length: 12 }, () => ({
+    this.leaves = Array.from({ length: 20 }, () => ({
       x: Math.random() * this.WIDTH,
       y: Math.random() * this.HEIGHT,
       rotation: Math.random() * Math.PI * 2,
       rotSpeed: 0.05 + Math.random() * 0.1,
-      fallSpeed: 0.3 + Math.random() * 0.4,
+      fallSpeed: 0.6 + Math.random() * 0.8,
       drift: Math.random() * Math.PI * 2,
-      size: 2 + Math.random() * 2,
+      size: 4 + Math.random() * 4,
     }));
   }
 
@@ -394,31 +394,31 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
 
   drawSky() {
     // Gradient sky
-    const gradient = this.ctx.createLinearGradient(0, 0, 0, 100);
+    const gradient = this.ctx.createLinearGradient(0, 0, 0, 200);
     gradient.addColorStop(0, this.p.sky1);
     gradient.addColorStop(0.4, this.p.sky2);
     gradient.addColorStop(0.7, this.p.sky3);
     gradient.addColorStop(1, this.p.skyHorizon);
     this.ctx.fillStyle = gradient;
-    this.ctx.fillRect(0, 0, this.WIDTH, 100);
+    this.ctx.fillRect(0, 0, this.WIDTH, 200);
   }
 
   drawAurora() {
     for (const wave of this.auroraWaves) {
       this.ctx.globalAlpha = wave.alpha;
-      for (let x = 0; x < this.WIDTH; x += 2) {
+      for (let x = 0; x < this.WIDTH; x += 3) {
         const y =
-          15 +
+          30 +
           wave.offset +
           Math.sin(x * wave.frequency + this.t * wave.speed) * wave.amplitude;
-        const h = 8 + Math.sin(x * 0.03 + this.t * 0.01) * 4;
+        const h = 16 + Math.sin(x * 0.015 + this.t * 0.01) * 8;
 
         const gradient = this.ctx.createLinearGradient(x, y, x, y + h);
         gradient.addColorStop(0, 'transparent');
         gradient.addColorStop(0.5, this.p.aurora1);
         gradient.addColorStop(1, 'transparent');
         this.ctx.fillStyle = gradient;
-        this.ctx.fillRect(x, y, 2, h);
+        this.ctx.fillRect(x, y, 3, h);
       }
     }
     this.ctx.globalAlpha = 1;
@@ -437,9 +437,9 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
     if (Math.random() < 0.002 && this.shootingStars.length < 2) {
       this.shootingStars.push({
         x: Math.random() * this.WIDTH,
-        y: Math.random() * 30,
-        vx: 3 + Math.random() * 2,
-        vy: 1 + Math.random(),
+        y: Math.random() * 60,
+        vx: 6 + Math.random() * 4,
+        vy: 2 + Math.random() * 2,
         life: 30,
       });
     }
@@ -451,15 +451,15 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
       this.ctx.globalAlpha = alpha;
 
       // Trail
-      for (let j = 0; j < 8; j++) {
-        const trailAlpha = alpha * (1 - j / 8);
+      for (let j = 0; j < 12; j++) {
+        const trailAlpha = alpha * (1 - j / 12);
         this.ctx.globalAlpha = trailAlpha;
         this.px(
           ss.x - ss.vx * j * 0.5,
           ss.y - ss.vy * j * 0.5,
           '#ffffff',
-          1,
-          1,
+          2,
+          2,
         );
       }
 
@@ -475,37 +475,37 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
   }
 
   drawMoon() {
-    const mx = 260,
-      my = 12;
+    const mx = 520,
+      my = 24;
 
     // Outer glow
     this.ctx.globalAlpha = 0.08;
     this.ctx.beginPath();
-    this.ctx.arc(mx + 8, my + 8, 25, 0, Math.PI * 2);
+    this.ctx.arc(mx + 16, my + 16, 50, 0, Math.PI * 2);
     this.ctx.fillStyle = this.p.moonGlow;
     this.ctx.fill();
 
     // Inner glow
     this.ctx.globalAlpha = 0.15;
     this.ctx.beginPath();
-    this.ctx.arc(mx + 8, my + 8, 15, 0, Math.PI * 2);
+    this.ctx.arc(mx + 16, my + 16, 30, 0, Math.PI * 2);
     this.ctx.fill();
     this.ctx.globalAlpha = 1;
 
     // Moon body
-    this.px(mx + 2, my, this.p.moon, 12, 2);
-    this.px(mx, my + 2, this.p.moon, 16, 12);
-    this.px(mx + 2, my + 14, this.p.moon, 12, 2);
+    this.px(mx + 4, my, this.p.moon, 24, 4);
+    this.px(mx, my + 4, this.p.moon, 32, 24);
+    this.px(mx + 4, my + 28, this.p.moon, 24, 4);
 
     // Craters
-    this.px(mx + 4, my + 4, this.p.moonCrater, 3, 2);
-    this.px(mx + 10, my + 8, this.p.moonCrater, 2, 2);
-    this.px(mx + 6, my + 10, this.p.moonCrater, 2, 1);
+    this.px(mx + 8, my + 8, this.p.moonCrater, 6, 4);
+    this.px(mx + 20, my + 16, this.p.moonCrater, 4, 4);
+    this.px(mx + 12, my + 20, this.p.moonCrater, 4, 2);
 
     // Crescent shadow
     this.ctx.globalAlpha = 0.6;
-    this.px(mx + 10, my + 2, this.p.sky1, 6, 12);
-    this.px(mx + 8, my + 4, this.p.sky1, 2, 8);
+    this.px(mx + 20, my + 4, this.p.sky1, 12, 24);
+    this.px(mx + 16, my + 8, this.p.sky1, 4, 16);
     this.ctx.globalAlpha = 1;
   }
 
@@ -535,15 +535,15 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
       for (const peak of mt.peaks) {
         // Draw mountain shape
         this.ctx.beginPath();
-        this.ctx.moveTo(peak.x - peak.width / 2, mt.yOffset + 40);
-        this.ctx.lineTo(peak.x, mt.yOffset + 40 - peak.height);
-        this.ctx.lineTo(peak.x + peak.width / 2, mt.yOffset + 40);
+        this.ctx.moveTo(peak.x - peak.width / 2, mt.yOffset + 80);
+        this.ctx.lineTo(peak.x, mt.yOffset + 80 - peak.height);
+        this.ctx.lineTo(peak.x + peak.width / 2, mt.yOffset + 80);
         this.ctx.fill();
 
         peak.x -= mt.speed;
         if (peak.x < -peak.width) {
           peak.x = this.WIDTH + peak.width;
-          peak.height = 20 + Math.random() * 30 + mt.layer * 10;
+          peak.height = 40 + Math.random() * 60 + mt.layer * 20;
         }
       }
     }
@@ -557,12 +557,12 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
       const alpha = 0.3 + tree.layer * 0.15;
       this.ctx.globalAlpha = alpha;
 
-      const sway = Math.sin(this.t * tree.swaySpeed + tree.sway) * 2;
-      const baseY = 96;
+      const sway = Math.sin(this.t * tree.swaySpeed + tree.sway) * 4;
+      const baseY = 192;
       const gx = Math.round(tree.x);
 
       // Trunk
-      const trunkW = 2 + tree.layer;
+      const trunkW = 4 + tree.layer * 2;
       const trunkH = tree.height * 0.3;
       this.px(gx, baseY - trunkH, this.p.tree1, trunkW, trunkH);
 
@@ -584,16 +584,16 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
 
       // Top
       this.px(
-        gx - 2 + sway,
+        gx - 4 + sway,
         baseY - trunkH - tree.height * 0.8,
         this.p.leafHighlight,
-        4,
-        3,
+        8,
+        6,
       );
 
       tree.x -= tree.speed;
       if (tree.x < -tree.width * 2) {
-        tree.x = this.WIDTH + tree.width + Math.random() * 50;
+        tree.x = this.WIDTH + tree.width + Math.random() * 100;
       }
     }
     this.ctx.globalAlpha = 1;
@@ -601,25 +601,25 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
 
   drawGround() {
     // Water/river
-    const waterY = 100;
-    this.px(0, waterY, this.p.water, this.WIDTH, 10);
+    const waterY = 200;
+    this.px(0, waterY, this.p.water, this.WIDTH, 20);
 
     // Water reflections
-    for (let i = 0; i < 20; i++) {
-      const rx = ((i * 18 + this.t * 0.5) % (this.WIDTH + 20)) - 10;
-      const ry = waterY + 2 + Math.sin(this.t * 0.1 + i) * 2;
+    for (let i = 0; i < 30; i++) {
+      const rx = ((i * 24 + this.t * 0.5) % (this.WIDTH + 20)) - 10;
+      const ry = waterY + 4 + Math.sin(this.t * 0.1 + i) * 4;
       this.ctx.globalAlpha = 0.3 + Math.sin(this.t * 0.05 + i) * 0.2;
-      this.px(rx, ry, this.p.waterHighlight, 8, 1);
+      this.px(rx, ry, this.p.waterHighlight, 16, 2);
     }
     this.ctx.globalAlpha = 1;
 
     // Ground base
-    this.px(0, 110, this.p.ground, this.WIDTH, 24);
-    this.px(0, 110, this.p.groundLight, this.WIDTH, 1);
+    this.px(0, 220, this.p.ground, this.WIDTH, 48);
+    this.px(0, 220, this.p.groundLight, this.WIDTH, 2);
 
     // Grass line
     for (const grass of this.grassBlades) {
-      const sway = Math.sin(this.t * grass.swaySpeed + grass.sway) * 1.5;
+      const sway = Math.sin(this.t * grass.swaySpeed + grass.sway) * 3;
       const gx =
         (((grass.x - this.groundOffset * 0.8) % (this.WIDTH * 1.5)) +
           this.WIDTH * 1.5) %
@@ -628,20 +628,20 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
       if (gx < this.WIDTH) {
         this.ctx.strokeStyle =
           Math.random() < 0.3 ? this.p.grassLight : this.p.grass;
-        this.ctx.lineWidth = 1;
+        this.ctx.lineWidth = 2;
         this.ctx.beginPath();
-        this.ctx.moveTo(gx, 110);
-        this.ctx.lineTo(gx + sway, 110 - grass.height);
+        this.ctx.moveTo(gx, 220);
+        this.ctx.lineTo(gx + sway, 220 - grass.height);
         this.ctx.stroke();
       }
     }
 
     // Ground details
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 25; i++) {
       const dx =
-        (((i * 25 - this.groundOffset) % (this.WIDTH + 30)) + this.WIDTH + 30) %
+        (((i * 30 - this.groundOffset) % (this.WIDTH + 30)) + this.WIDTH + 30) %
         (this.WIDTH + 30);
-      this.px(dx, 112 + (i % 3), this.p.groundLight, 3 + (i % 2), 1);
+      this.px(dx, 224 + (i % 3) * 2, this.p.groundLight, 6 + (i % 2) * 2, 2);
     }
   }
 
@@ -668,11 +668,11 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
 
         // Glow
         this.ctx.globalAlpha = glow * 0.3;
-        this.px(f.x - 1, fy - 1, this.p.fireflyGlow, 3, 3);
+        this.px(f.x - 2, fy - 2, this.p.fireflyGlow, 6, 6);
 
         // Core
         this.ctx.globalAlpha = glow * 0.9;
-        this.px(f.x, fy, this.p.firefly, 1, 1);
+        this.px(f.x, fy, this.p.firefly, 2, 2);
       }
 
       f.x -= f.moveSpeed;
@@ -701,7 +701,7 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
       bat.x -= bat.speed;
       if (bat.x < -bat.size * 3) {
         bat.x = this.WIDTH + bat.size * 3;
-        bat.y = 20 + Math.random() * 30;
+        bat.y = 40 + Math.random() * 60;
       }
     }
   }
@@ -739,85 +739,85 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
 
   drawCharacter() {
     const f = this.FRAMES[this.frame];
-    const cx = 80;
-    const bounceY = f.bounce;
+    const cx = 160;
+    const bounceY = f.bounce * 2;
 
     // Shadow
     this.ctx.globalAlpha = 0.4;
-    this.px(cx - 4, 108, this.p.charShadow, 16, 2);
+    this.px(cx - 8, 216, this.p.charShadow, 32, 4);
     this.ctx.globalAlpha = 1;
 
     // Cape (animated)
-    const capeWave = Math.sin(this.t * 0.2) * 2;
+    const capeWave = Math.sin(this.t * 0.2) * 4;
     this.ctx.fillStyle = this.p.charCape;
     this.ctx.beginPath();
-    this.ctx.moveTo(cx + 2, f.by + bounceY + 4);
-    this.ctx.lineTo(cx - 8 + capeWave, f.by + bounceY + 20);
-    this.ctx.lineTo(cx - 4 + capeWave * 0.5, f.by + bounceY + 22);
-    this.ctx.lineTo(cx + 2, f.by + bounceY + 8);
+    this.ctx.moveTo(cx + 4, f.by * 2 + bounceY + 8);
+    this.ctx.lineTo(cx - 16 + capeWave, f.by * 2 + bounceY + 40);
+    this.ctx.lineTo(cx - 8 + capeWave * 0.5, f.by * 2 + bounceY + 44);
+    this.ctx.lineTo(cx + 4, f.by * 2 + bounceY + 16);
     this.ctx.fill();
 
     // Cape highlight
     this.ctx.fillStyle = this.p.charCapeLight;
     this.ctx.beginPath();
-    this.ctx.moveTo(cx + 2, f.by + bounceY + 4);
-    this.ctx.lineTo(cx - 4 + capeWave * 0.5, f.by + bounceY + 12);
-    this.ctx.lineTo(cx + 2, f.by + bounceY + 6);
+    this.ctx.moveTo(cx + 4, f.by * 2 + bounceY + 8);
+    this.ctx.lineTo(cx - 8 + capeWave * 0.5, f.by * 2 + bounceY + 24);
+    this.ctx.lineTo(cx + 4, f.by * 2 + bounceY + 12);
     this.ctx.fill();
 
     // Legs
     for (const [ox, oy] of f.ll) {
-      this.px(cx + ox, oy + bounceY, this.p.charBody, 3, 4);
-      this.px(cx + ox, oy + bounceY + 4, this.p.charBoots, 3, 2);
+      this.px(cx + ox * 2, oy * 2 + bounceY, this.p.charBody, 6, 8);
+      this.px(cx + ox * 2, oy * 2 + bounceY + 8, this.p.charBoots, 6, 4);
     }
     for (const [ox, oy] of f.rl) {
-      this.px(cx + ox, oy + bounceY, this.p.charBody, 3, 4);
-      this.px(cx + ox, oy + bounceY + 4, this.p.charBoots, 3, 2);
+      this.px(cx + ox * 2, oy * 2 + bounceY, this.p.charBody, 6, 8);
+      this.px(cx + ox * 2, oy * 2 + bounceY + 8, this.p.charBoots, 6, 4);
     }
 
     // Body
-    this.px(cx - 2, f.by + bounceY, this.p.charBody, 8, 10);
-    this.px(cx - 1, f.by + bounceY + 1, this.p.charBodyLight, 4, 6);
+    this.px(cx - 4, f.by * 2 + bounceY, this.p.charBody, 16, 20);
+    this.px(cx - 2, f.by * 2 + bounceY + 2, this.p.charBodyLight, 8, 12);
 
     // Belt
-    this.px(cx - 2, f.by + bounceY + 8, '#40302a', 8, 2);
-    this.px(cx + 1, f.by + bounceY + 8, '#c0a040', 2, 2);
+    this.px(cx - 4, f.by * 2 + bounceY + 16, '#40302a', 16, 4);
+    this.px(cx + 2, f.by * 2 + bounceY + 16, '#c0a040', 4, 4);
 
     // Arms
     for (const [ox, oy] of f.la) {
-      this.px(cx + ox - 2, oy + bounceY, this.p.charBody, 3, 4);
-      this.px(cx + ox - 2, oy + bounceY + 4, this.p.charSkin, 2, 2);
+      this.px(cx + ox * 2 - 4, oy * 2 + bounceY, this.p.charBody, 6, 8);
+      this.px(cx + ox * 2 - 4, oy * 2 + bounceY + 8, this.p.charSkin, 4, 4);
     }
     for (const [ox, oy] of f.ra) {
-      this.px(cx + ox + 3, oy + bounceY, this.p.charBody, 3, 4);
-      this.px(cx + ox + 3, oy + bounceY + 4, this.p.charSkin, 2, 2);
+      this.px(cx + ox * 2 + 6, oy * 2 + bounceY, this.p.charBody, 6, 8);
+      this.px(cx + ox * 2 + 6, oy * 2 + bounceY + 8, this.p.charSkin, 4, 4);
     }
 
     // Head
-    this.px(cx - 1, f.hy + bounceY, this.p.charSkin, 8, 8);
-    this.px(cx - 2, f.hy + bounceY + 2, this.p.charSkin, 10, 4);
+    this.px(cx - 2, f.hy * 2 + bounceY, this.p.charSkin, 16, 16);
+    this.px(cx - 4, f.hy * 2 + bounceY + 4, this.p.charSkin, 20, 8);
 
     // Face shadow
-    this.px(cx - 1, f.hy + bounceY + 4, this.p.charSkinShadow, 3, 3);
+    this.px(cx - 2, f.hy * 2 + bounceY + 8, this.p.charSkinShadow, 6, 6);
 
     // Hair
-    this.px(cx - 2, f.hy + bounceY - 1, this.p.charHair, 10, 4);
-    this.px(cx - 3, f.hy + bounceY + 1, this.p.charHair, 3, 4);
-    this.px(cx + 6, f.hy + bounceY + 1, this.p.charHair, 2, 2);
+    this.px(cx - 4, f.hy * 2 + bounceY - 2, this.p.charHair, 20, 8);
+    this.px(cx - 6, f.hy * 2 + bounceY + 2, this.p.charHair, 6, 8);
+    this.px(cx + 12, f.hy * 2 + bounceY + 2, this.p.charHair, 4, 4);
 
     // Eyes
-    this.px(cx + 4, f.hy + bounceY + 3, this.p.charEye, 2, 2);
-    this.px(cx + 5, f.hy + bounceY + 3, '#ffffff', 1, 1);
+    this.px(cx + 8, f.hy * 2 + bounceY + 6, this.p.charEye, 4, 4);
+    this.px(cx + 10, f.hy * 2 + bounceY + 6, '#ffffff', 2, 2);
 
     // Mouth
-    this.px(cx + 4, f.hy + bounceY + 6, '#c06050', 2, 1);
+    this.px(cx + 8, f.hy * 2 + bounceY + 12, '#c06050', 4, 2);
 
     // Speed lines
     this.ctx.globalAlpha = 0.5;
     for (let i = 0; i < 4; i++) {
-      const ly = 70 + i * 5 + (this.frame % 2) * 2;
-      const lw = 6 + i * 3;
-      this.px(cx - 20 - lw, ly + bounceY, this.p.charBodyLight, lw, 1);
+      const ly = 140 + i * 10 + (this.frame % 2) * 4;
+      const lw = 12 + i * 6;
+      this.px(cx - 40 - lw, ly + bounceY, this.p.charBodyLight, lw, 2);
     }
     this.ctx.globalAlpha = 1;
   }
@@ -826,8 +826,8 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
     // Multiple fog layers
     for (let layer = 0; layer < 3; layer++) {
       this.ctx.globalAlpha = 0.04 + layer * 0.02;
-      const fogY = 80 + layer * 10;
-      const fogH = 20 - layer * 4;
+      const fogY = 160 + layer * 20;
+      const fogH = 40 - layer * 8;
 
       const gradient = this.ctx.createLinearGradient(0, fogY, 0, fogY + fogH);
       gradient.addColorStop(0, 'transparent');
@@ -842,8 +842,8 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
 
   drawEffects() {
     // Scanlines
-    this.ctx.globalAlpha = 0.05;
-    for (let y = 0; y < this.HEIGHT; y += 2) {
+    this.ctx.globalAlpha = 0.04;
+    for (let y = 0; y < this.HEIGHT; y += 3) {
       this.px(0, y, '#000000', this.WIDTH, 1);
     }
 
@@ -851,10 +851,10 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
     const vignette = this.ctx.createRadialGradient(
       this.WIDTH / 2,
       this.HEIGHT / 2,
-      30,
+      60,
       this.WIDTH / 2,
       this.HEIGHT / 2,
-      this.WIDTH * 0.7,
+      this.WIDTH * 0.6,
     );
     vignette.addColorStop(0, 'transparent');
     vignette.addColorStop(1, 'rgba(0,0,0,0.6)');
@@ -894,7 +894,7 @@ export class ToolshopForestComponent implements AfterViewInit, OnDestroy {
     this.drawEffects();
 
     // Update animation state
-    this.groundOffset += 1.2;
+    this.groundOffset += 2.4;
     this.frameTimer++;
     if (this.frameTimer >= this.FRAME_SPEED) {
       this.frameTimer = 0;
