@@ -11,7 +11,6 @@ interface Post {
 @Component({
   selector: 'app-toolshop-art',
   standalone: true,
-  imports: [NgIf],
   templateUrl: './toolshop-art.component.html',
   styleUrls: ['./toolshop-art.component.scss'],
 })
