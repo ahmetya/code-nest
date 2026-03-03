@@ -80,6 +80,10 @@ fieldset {
   border-width: 2px;
   border-color: color(srgb 0.658823 0.701961 0.811765 / 0.2);
   border-style: solid;
+  box-shadow:
+    0 0 30px #3264964d,
+    0 0 60px #1e3c5a33,
+    inset 0 0 20px #00000080;
 }
 
 .article-content {
@@ -91,7 +95,7 @@ fieldset {
 }
 
 .layout {
-  background-color: #0e1217;
+  background: linear-gradient(180deg, #050510, #0a0a1a, #0f0a15);
   min-height: 100vh;
   width: 100%;
 }
@@ -170,5 +174,8 @@ legend {
   color: #474a6e;
 }
 .secondary:hover {
-  color: #6e4762;
+  color: #b088d0;
+  text-shadow:
+    0 0 10px rgba(88, 197, 11, 0.6),
+    0 0 30px rgba(49, 33, 74, 0.4);
 }
