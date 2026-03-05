@@ -17,10 +17,18 @@
         <a [routerLink]="'toolshop-forest'" title="Navigate to Toolshop Forest">
           <button class="secondary">TOOLSHOP FOREST</button>
         </a>
-        <div class="image-wrapper">
+        <div class="image-wrapper" (click)="talkAI()">
           <img src="assets/robot-image-low.jpg" alt="Code Nest Logo" class="logo" />
         </div>
       </div>
     </article>
+
+    <article class="content-card short">
+      <div class="article-content">
+        <p class="{{answerStyle}}">{{ aiAnswer }}</p>
+      </div>
+    </article>
+
+
   </div>
 </div>

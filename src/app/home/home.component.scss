@@ -68,6 +68,8 @@ fieldset {
   flex-wrap: wrap;
   justify-content: center;
   padding: 32px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .content-card {
@@ -84,6 +86,10 @@ fieldset {
     0 0 30px #3264964d,
     0 0 60px #1e3c5a33,
     inset 0 0 20px #00000080;
+
+  &.short {
+    height: 100%;
+  }
 }
 
 .article-content {
@@ -133,8 +139,12 @@ body {
   width: calc(100% + 8px);
   height: calc(100% + 4px);
   animation: glowing 20s linear infinite;
-  transition: opacity 0.3s ease-in-out;
+  transition: filter 0.3s ease-in-out;
   border-radius: 16px;
+}
+
+.image-wrapper:hover:after {
+  filter: blur(25px);
 }
 
 .image-wrapper:empty {
@@ -178,4 +188,20 @@ legend {
   text-shadow:
     0 0 10px rgba(88, 197, 11, 0.6),
     0 0 30px rgba(49, 33, 74, 0.4);
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.answered {
+  font-family: "Press Start 2P", monospace;
+  image-rendering: pixelated;
+  text-align: center;
 }
